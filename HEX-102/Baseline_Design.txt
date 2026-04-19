@@ -1,0 +1,266 @@
+                             583.15
+
+
+F := 0.95; #VERY ROUGH, NEED TO MEASURE PROPERLY
+                           F := 0.95
+
+U := U__o_ass; #TEMPORARY ASSUMPTION
+A__req; #m2
+DeltaT__LM;
+                            U := 68
+
+                          0.7024350121
+
+                          319.2459693
+
+L__tube := 1.0; #m
+D__internal := 0.020; #m
+D__external := 0.024; #m
+#Plain tubes (no fins)
+A__o_one_tube := Pi*D__external*L__tube;
+N__tt := A__req/A__o_one_tube;
+
+
+
+                         L__tube := 1.0
+
+                      D__internal := 0.020
+
+                      D__external := 0.024
+
+                 A__o_one_tube := 0.07539822370
+
+                      N__tt := 9.316333696
+
+#Chosen Layout is a triangular with 30 degrees rotation.
+#Number of passes is 2
+N__p := 2;
+psi__n := 0.17;
+C__1 := 0.866;
+L__tp := 1.25 * D__external; #Minimum TEMA standars is 1.25 https://www.thermopedia.com/content/1121/
+
+                           N__p := 2
+
+                         psi__n := 0.17
+
+                         C__1 := 0.866
+
+                        L__tp := 0.03000
+
+
+D__ctl := L__tp*(4*C__1*N__tt/3.14159265/(1-psi__n))^(1/2);
+                     D__ctl := 0.1055403991
+
+L__bb := 0.0127; #Baffle bypass clearance
+                        L__bb := 0.0127
+
+
+D__s := D__ctl + L__bb + D__external;
+L__B := 0.5*D__s; #Baffle spacing
+                      D__s := 0.1422403991
+
+                     L__B := 0.07112019955
+
+P__v := L__tp * cos(3.14159265/6);
+N__r := D__ctl / P__v;
+BaffleCut := 0.25; #%
+N__tcc := (1-BaffleCut)*N__r;
+
+                     P__v := 0.02598076212
+
+                      N__r := 4.062251854
+
+                       BaffleCut := 0.25
+
+                     N__tcc := 3.046688890
+
+T__coldAvg := (T__cold1 + T__cold2)/2;
+                   T__coldAvg := 569.6741668
+
+#Calculating Tube side cross-sectional flow area
+N__per_pass := N__tt/N__p;
+A__internal := (3.14159/4)*D__internal^2; #m2
+A__t := N__per_pass * A__internal; #m2
+
+                   N__per_pass := 4.658166848
+
+                 A__internal := 0.0003141590000
+
+                     A__t := 0.001463405039
+
+#Helisol 5A key equations
+v__t := m__hot/(rho__t*A__t);
+Re__t := (rho__t*v__t*D__internal)/mu__t;
+Pr__t := (C__pt*mu__t)/k__t;
+mu__corr := 1; 
+Nu__t := 1.86*(Re__t*Pr__t*D__internal/L__tube)^(1/3);
+h__i := (Nu__t *k__t)/D__internal; #W/m^2/K
+                      v__t := 0.2536349963
+
+                      Re__t := 1080.698229
+
+                      Pr__t := 40.23960789
+
+                         mu__corr := 1
+
+                      Nu__t := 17.75452275
+
+                      h__i := 488.2493756
+
+#properties of Helisol 5A, shell side
+rho__s := 689.5; #kg/m3 (air at 280C)
+mu__s := 0.41e-3; #kg/m/s
+k__s := 0.076; #W/m/K
+C__ps := 2150; 
+                        rho__s := 689.5
+
+                        mu__s := 0.00041
+
+                         k__s := 0.076
+
+                         C__ps := 2150
+
+Q__vol_s := m__cold/rho__s;
+A__face := L__tube*(D__ctl + D__external);
+u__f := Q__vol_s/A__face;
+u__max := u__f*(L__tp/(L__tp - D__external));
+                  Q__vol_s := 0.0003625815809
+
+                    A__face := 0.1295403991
+
+                     u__f := 0.002798984590
+
+                    u__max := 0.01399492295
+
+Pr__s := C__ps*mu__s/k__s;
+Re__s := rho__s * u__max * D__external/mu__s;
+Nu__s := 0.27*Re__s^0.63*Pr__s^0.36;
+h__s := Nu__s * k__s/D__external;
+                      Pr__s := 11.59868421
+
+                      Re__s := 564.8487439
+
+                      Nu__s := 35.34013225
+
+                      h__s := 111.9104188
+
+#Defining Thermal Conductivity Variables
+k__tube := 50; #W/m/K
+Rf__o := 0.0002; #m2*K/W
+Rf__i := 0.0003; #m2*K/W
+
+                         k__tube := 50
+
+                        Rf__o := 0.0002
+
+                        Rf__i := 0.0003
+
+#Outside area calculations
+A__o := A__o_one_tube * N__tt;
+                      A__o := 0.7024350121
+
+#Internal Area calculations
+A__i := 3.14159 * D__internal * L__tube * N__tt;
+                      A__i := 0.5853620155
+
+eta__o := 1.0; #No fin efficiency losses
+                         eta__o := 1.0
+
+#Calculating all thermal resistances
+R__shell_conv := 1/eta__o/h__s; #Air side convection
+R__tube_conv := 1/(h__i*(A__i/A__o)); #Water side convection
+R__wall_cond := (D__external * ln(D__external/D__internal))/(2*k__tube);
+R__fouling := (Rf__i * (A__o/A__i)) + Rf__o;
+
+                R__shell_conv := 0.008935718503
+
+                 R__tube_conv := 0.002457762517
+
+                R__wall_cond := 0.00004375717363
+
+                 R__fouling := 0.0005600003041
+
+#Calculating U
+R__total := R__shell_conv + R__tube_conv + R__wall_cond + R__fouling;
+
+                   R__total := 0.01199723849
+
+print("============================");
+U__o_calc := 1/R__total; #W/m2/K
+print("============================");
+                 "============================"
+
+                    U__o_calc := 83.35251490
+
+                 "============================"
+
+#Tube side pressure drop
+
+f__t := 16/Re__t;
+L__total := L__tube * N__p;
+K := 1.8*N__p;
+DP__t_friction := 4*f__t*(L__total/D__internal)*(rho__t*v__t^2/2);
+DP__t_return := K*(rho__t*v__t^2)/2;
+DP__t := DP__t_friction + DP__t_return;
+                     f__t := 0.01480524310
+
+                        L__total := 2.0
+
+                            K := 3.6
+
+                 DP__t_friction := 390.4970464
+
+                  DP__t_return := 237.3803249
+
+                      DP__t := 627.8773713
+
+#Shell side pressure drop
+A__s := (L__tp - D__external)*D__s*L__B/L__tp;
+G__s := m__cold/A__s;
+u__s := G__s/rho__s;
+d__e := 1.10/D__external*(L__tp^2 - 0.917*D__external^2);
+Re__s := G__s*d__e/mu__s;
+
+                     A__s := 0.002023233114
+
+                      G__s := 123.5646047
+
+                      u__s := 0.1792089988
+
+                     d__e := 0.01704120000
+
+                      Re__s := 5135.827176
+
+#Calcualted via Robinson & Briggs
+
+f := exp(0.576 - 0.19*ln(Re__s));
+DP__s := N__r * f * (rho__s * u__max^2 / 2);
+                       f := 0.3508630590
+
+                     DP__s := 0.09623870920
+
+print("=====summary=====");
+Re__t := Re__t;
+Re__s := Re__s;
+DP__t := DP__t; #Pa
+DP__s := DP__s; #Pa
+U__o_calc := U__o_calc;
+U__o_ass := U__o_ass;
+Q := Q/1000; #kW
+                      "=====summary====="
+
+                      Re__t := 1080.698229
+
+                      Re__s := 5135.827176
+
+                      DP__t := 627.8773713
+
+                     DP__s := 0.09623870920
+
+                    U__o_calc := 83.35251490
+
+                         U__o_ass := 68
+
+                        Q := 14.48652069
+
+

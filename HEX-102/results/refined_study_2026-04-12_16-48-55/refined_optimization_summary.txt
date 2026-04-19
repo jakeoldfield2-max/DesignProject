@@ -1,0 +1,351 @@
+=============================================================
+   REFINED HEAT EXCHANGER OPTIMIZATION STUDY
+   Generated: 12-Apr-2026 16:49:21
+=============================================================
+
+--- BASELINE REFERENCE ---
+  Volume:             0.015890 m3
+  D/L Ratio:          0.1422
+  Total Pressure Drop: 627.97 Pa
+
+--- TOP 15 OPTIMIZED DESIGNS ---
+(Meeting pressure drop constraint, ranked by composite score)
+
+RANK 1:
+  Parameters:
+    L_tube = 1.50 m
+    D_int = 28 mm
+    Pitch Ratio = 1.25
+    Baffle Spacing Ratio = 0.40
+    Baffle Cut = 0.20
+  Results:
+    Shell Diameter D_s = 0.1442 m
+    Number of Tubes = 4.7
+    Volume = 0.024498 m3
+    D/L Ratio = 0.0961
+    Tube-side dP = 552.12 Pa
+    Shell-side dP = 0.0268 Pa
+    Total dP = 552.14 Pa
+    U_o = 60.54 W/m2/K
+  Improvements vs Baseline:
+    Volume: -54.2%
+    D/L Ratio: 32.4%
+    Pressure Drop: 12.1%
+    Composite Score: -0.0373
+
+RANK 2:
+  Parameters:
+    L_tube = 1.50 m
+    D_int = 28 mm
+    Pitch Ratio = 1.25
+    Baffle Spacing Ratio = 0.40
+    Baffle Cut = 0.25
+  Results:
+    Shell Diameter D_s = 0.1442 m
+    Number of Tubes = 4.7
+    Volume = 0.024498 m3
+    D/L Ratio = 0.0961
+    Tube-side dP = 552.12 Pa
+    Shell-side dP = 0.0268 Pa
+    Total dP = 552.14 Pa
+    U_o = 60.54 W/m2/K
+  Improvements vs Baseline:
+    Volume: -54.2%
+    D/L Ratio: 32.4%
+    Pressure Drop: 12.1%
+    Composite Score: -0.0373
+
+RANK 3:
+  Parameters:
+    L_tube = 1.50 m
+    D_int = 28 mm
+    Pitch Ratio = 1.25
+    Baffle Spacing Ratio = 0.40
+    Baffle Cut = 0.30
+  Results:
+    Shell Diameter D_s = 0.1442 m
+    Number of Tubes = 4.7
+    Volume = 0.024498 m3
+    D/L Ratio = 0.0961
+    Tube-side dP = 552.12 Pa
+    Shell-side dP = 0.0268 Pa
+    Total dP = 552.14 Pa
+    U_o = 60.54 W/m2/K
+  Improvements vs Baseline:
+    Volume: -54.2%
+    D/L Ratio: 32.4%
+    Pressure Drop: 12.1%
+    Composite Score: -0.0373
+
+RANK 4:
+  Parameters:
+    L_tube = 1.50 m
+    D_int = 28 mm
+    Pitch Ratio = 1.25
+    Baffle Spacing Ratio = 0.50
+    Baffle Cut = 0.20
+  Results:
+    Shell Diameter D_s = 0.1442 m
+    Number of Tubes = 4.7
+    Volume = 0.024498 m3
+    D/L Ratio = 0.0961
+    Tube-side dP = 552.12 Pa
+    Shell-side dP = 0.0279 Pa
+    Total dP = 552.14 Pa
+    U_o = 60.54 W/m2/K
+  Improvements vs Baseline:
+    Volume: -54.2%
+    D/L Ratio: 32.4%
+    Pressure Drop: 12.1%
+    Composite Score: -0.0373
+
+RANK 5:
+  Parameters:
+    L_tube = 1.50 m
+    D_int = 28 mm
+    Pitch Ratio = 1.25
+    Baffle Spacing Ratio = 0.50
+    Baffle Cut = 0.25
+  Results:
+    Shell Diameter D_s = 0.1442 m
+    Number of Tubes = 4.7
+    Volume = 0.024498 m3
+    D/L Ratio = 0.0961
+    Tube-side dP = 552.12 Pa
+    Shell-side dP = 0.0279 Pa
+    Total dP = 552.14 Pa
+    U_o = 60.54 W/m2/K
+  Improvements vs Baseline:
+    Volume: -54.2%
+    D/L Ratio: 32.4%
+    Pressure Drop: 12.1%
+    Composite Score: -0.0373
+
+RANK 6:
+  Parameters:
+    L_tube = 1.50 m
+    D_int = 28 mm
+    Pitch Ratio = 1.25
+    Baffle Spacing Ratio = 0.50
+    Baffle Cut = 0.30
+  Results:
+    Shell Diameter D_s = 0.1442 m
+    Number of Tubes = 4.7
+    Volume = 0.024498 m3
+    D/L Ratio = 0.0961
+    Tube-side dP = 552.12 Pa
+    Shell-side dP = 0.0279 Pa
+    Total dP = 552.14 Pa
+    U_o = 60.54 W/m2/K
+  Improvements vs Baseline:
+    Volume: -54.2%
+    D/L Ratio: 32.4%
+    Pressure Drop: 12.1%
+    Composite Score: -0.0373
+
+RANK 7:
+  Parameters:
+    L_tube = 1.50 m
+    D_int = 28 mm
+    Pitch Ratio = 1.25
+    Baffle Spacing Ratio = 0.60
+    Baffle Cut = 0.20
+  Results:
+    Shell Diameter D_s = 0.1442 m
+    Number of Tubes = 4.7
+    Volume = 0.024498 m3
+    D/L Ratio = 0.0961
+    Tube-side dP = 552.12 Pa
+    Shell-side dP = 0.0289 Pa
+    Total dP = 552.15 Pa
+    U_o = 60.54 W/m2/K
+  Improvements vs Baseline:
+    Volume: -54.2%
+    D/L Ratio: 32.4%
+    Pressure Drop: 12.1%
+    Composite Score: -0.0373
+
+RANK 8:
+  Parameters:
+    L_tube = 1.50 m
+    D_int = 28 mm
+    Pitch Ratio = 1.25
+    Baffle Spacing Ratio = 0.60
+    Baffle Cut = 0.25
+  Results:
+    Shell Diameter D_s = 0.1442 m
+    Number of Tubes = 4.7
+    Volume = 0.024498 m3
+    D/L Ratio = 0.0961
+    Tube-side dP = 552.12 Pa
+    Shell-side dP = 0.0289 Pa
+    Total dP = 552.15 Pa
+    U_o = 60.54 W/m2/K
+  Improvements vs Baseline:
+    Volume: -54.2%
+    D/L Ratio: 32.4%
+    Pressure Drop: 12.1%
+    Composite Score: -0.0373
+
+RANK 9:
+  Parameters:
+    L_tube = 1.50 m
+    D_int = 28 mm
+    Pitch Ratio = 1.25
+    Baffle Spacing Ratio = 0.60
+    Baffle Cut = 0.30
+  Results:
+    Shell Diameter D_s = 0.1442 m
+    Number of Tubes = 4.7
+    Volume = 0.024498 m3
+    D/L Ratio = 0.0961
+    Tube-side dP = 552.12 Pa
+    Shell-side dP = 0.0289 Pa
+    Total dP = 552.15 Pa
+    U_o = 60.54 W/m2/K
+  Improvements vs Baseline:
+    Volume: -54.2%
+    D/L Ratio: 32.4%
+    Pressure Drop: 12.1%
+    Composite Score: -0.0373
+
+RANK 10:
+  Parameters:
+    L_tube = 1.50 m
+    D_int = 28 mm
+    Pitch Ratio = 1.30
+    Baffle Spacing Ratio = 0.40
+    Baffle Cut = 0.20
+  Results:
+    Shell Diameter D_s = 0.1482 m
+    Number of Tubes = 4.7
+    Volume = 0.025869 m3
+    D/L Ratio = 0.0988
+    Tube-side dP = 552.12 Pa
+    Shell-side dP = 0.0190 Pa
+    Total dP = 552.14 Pa
+    U_o = 55.53 W/m2/K
+  Improvements vs Baseline:
+    Volume: -62.8%
+    D/L Ratio: 30.5%
+    Pressure Drop: 12.1%
+    Composite Score: -0.0669
+
+RANK 11:
+  Parameters:
+    L_tube = 1.50 m
+    D_int = 28 mm
+    Pitch Ratio = 1.30
+    Baffle Spacing Ratio = 0.40
+    Baffle Cut = 0.25
+  Results:
+    Shell Diameter D_s = 0.1482 m
+    Number of Tubes = 4.7
+    Volume = 0.025869 m3
+    D/L Ratio = 0.0988
+    Tube-side dP = 552.12 Pa
+    Shell-side dP = 0.0190 Pa
+    Total dP = 552.14 Pa
+    U_o = 55.53 W/m2/K
+  Improvements vs Baseline:
+    Volume: -62.8%
+    D/L Ratio: 30.5%
+    Pressure Drop: 12.1%
+    Composite Score: -0.0669
+
+RANK 12:
+  Parameters:
+    L_tube = 1.50 m
+    D_int = 28 mm
+    Pitch Ratio = 1.30
+    Baffle Spacing Ratio = 0.40
+    Baffle Cut = 0.30
+  Results:
+    Shell Diameter D_s = 0.1482 m
+    Number of Tubes = 4.7
+    Volume = 0.025869 m3
+    D/L Ratio = 0.0988
+    Tube-side dP = 552.12 Pa
+    Shell-side dP = 0.0190 Pa
+    Total dP = 552.14 Pa
+    U_o = 55.53 W/m2/K
+  Improvements vs Baseline:
+    Volume: -62.8%
+    D/L Ratio: 30.5%
+    Pressure Drop: 12.1%
+    Composite Score: -0.0669
+
+RANK 13:
+  Parameters:
+    L_tube = 1.50 m
+    D_int = 28 mm
+    Pitch Ratio = 1.30
+    Baffle Spacing Ratio = 0.50
+    Baffle Cut = 0.20
+  Results:
+    Shell Diameter D_s = 0.1482 m
+    Number of Tubes = 4.7
+    Volume = 0.025869 m3
+    D/L Ratio = 0.0988
+    Tube-side dP = 552.12 Pa
+    Shell-side dP = 0.0198 Pa
+    Total dP = 552.14 Pa
+    U_o = 55.53 W/m2/K
+  Improvements vs Baseline:
+    Volume: -62.8%
+    D/L Ratio: 30.5%
+    Pressure Drop: 12.1%
+    Composite Score: -0.0669
+
+RANK 14:
+  Parameters:
+    L_tube = 1.50 m
+    D_int = 28 mm
+    Pitch Ratio = 1.30
+    Baffle Spacing Ratio = 0.50
+    Baffle Cut = 0.25
+  Results:
+    Shell Diameter D_s = 0.1482 m
+    Number of Tubes = 4.7
+    Volume = 0.025869 m3
+    D/L Ratio = 0.0988
+    Tube-side dP = 552.12 Pa
+    Shell-side dP = 0.0198 Pa
+    Total dP = 552.14 Pa
+    U_o = 55.53 W/m2/K
+  Improvements vs Baseline:
+    Volume: -62.8%
+    D/L Ratio: 30.5%
+    Pressure Drop: 12.1%
+    Composite Score: -0.0669
+
+RANK 15:
+  Parameters:
+    L_tube = 1.50 m
+    D_int = 28 mm
+    Pitch Ratio = 1.30
+    Baffle Spacing Ratio = 0.50
+    Baffle Cut = 0.30
+  Results:
+    Shell Diameter D_s = 0.1482 m
+    Number of Tubes = 4.7
+    Volume = 0.025869 m3
+    D/L Ratio = 0.0988
+    Tube-side dP = 552.12 Pa
+    Shell-side dP = 0.0198 Pa
+    Total dP = 552.14 Pa
+    U_o = 55.53 W/m2/K
+  Improvements vs Baseline:
+    Volume: -62.8%
+    D/L Ratio: 30.5%
+    Pressure Drop: 12.1%
+    Composite Score: -0.0669
+
+--- KEY FINDINGS ---
+1. Longer tubes (2.0-2.5m) significantly improve D/L ratio
+2. Larger tube diameters (24-28mm) reduce pressure drop
+3. Trade-off exists: larger diameter -> lower dP but higher volume
+4. Baffle spacing has minimal impact on key metrics
+5. N_p=2 is optimal for minimizing pressure drop
+
+=============================================================

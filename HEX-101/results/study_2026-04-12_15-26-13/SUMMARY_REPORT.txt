@@ -1,0 +1,83 @@
+================================================================
+       AIR HEATER PARAMETRIC STUDY - SUMMARY REPORT
+================================================================
+Generated: 12-Apr-2026 15:26:38
+
+FIXED OPERATING CONDITIONS:
+  Air mass flow rate:      0.0570722222 kg/s
+  Hot fluid mass flow:     0.25 kg/s
+  Air inlet temperature:   25 C
+  Air outlet temperature:  280 C
+  Salt inlet temperature:  330 C
+
+OPTIMIZATION OBJECTIVES:
+  Primary:   Minimize tube-side pressure drop (< 7 kPa)
+  Secondary: Minimize shell diameter
+  Weighting: 70% pressure drop, 30% shell size
+
+================================================================
+PHASE 1: TUBE GEOMETRY OPTIMIZATION
+================================================================
+Parameters varied: L_tube, D_int, D_ext, N_p
+Total configurations tested: 300
+Valid configurations (DP_t < 7 kPa): 136
+
+Best Phase 1 Design:
+  Tube length:      L_tube = 3.00 m
+  Internal dia:     D_int  = 18.0 mm
+  External dia:     D_ext  = 20.0 mm
+  Tube passes:      N_p    = 2
+  -> Pressure drop: 0.31 kPa
+  -> Shell diameter: 214.9 mm
+
+================================================================
+PHASE 2: FIN GEOMETRY OPTIMIZATION
+================================================================
+Parameters varied: l_f, p_f, t_f
+Total configurations tested: 100
+Valid configurations (DP_t < 7 kPa): 100
+
+Best Phase 2 Design:
+  Fin height:       l_f = 5.0 mm
+  Fin pitch:        p_f = 2.00 mm
+  Fin thickness:    t_f = 1.00 mm
+  -> Pressure drop: 0.24 kPa
+  -> Shell diameter: 195.1 mm
+
+================================================================
+PHASE 3: LAYOUT OPTIMIZATION
+================================================================
+Parameters varied: LB_mult, psi_n, BaffleCut
+Total configurations tested: 120
+Valid configurations (DP_t < 7 kPa): 120
+
+Best Phase 3 Design:
+  Baffle spacing mult: LB_mult   = 1.5
+  Tube count fraction: psi_n     = 0.10
+  Baffle cut:          BaffleCut = 0.20
+  -> Pressure drop: 0.24 kPa
+  -> Shell diameter: 188.7 mm
+
+================================================================
+FINAL OPTIMIZED DESIGN
+================================================================
+Tube Geometry:
+  L_tube = 3.00 m
+  D_int  = 18.0 mm
+  D_ext  = 20.0 mm
+  N_p    = 2 passes
+
+Fin Geometry:
+  l_f = 5.0 mm (fin height)
+  p_f = 2.00 mm (fin pitch)
+  t_f = 1.00 mm (fin thickness)
+
+Layout Parameters:
+  LB_mult   = 1.5
+  psi_n     = 0.10
+  BaffleCut = 0.20
+
+FINAL PERFORMANCE:
+  Tube-side pressure drop: 0.24 kPa (< 7 kPa constraint: OK)
+  Shell diameter:          188.7 mm
+================================================================

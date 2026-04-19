@@ -1,0 +1,139 @@
+================================================================
+     FINAL HEAT EXCHANGER OPTIMIZATION STUDY REPORT
+     Generated: 12-Apr-2026 16:51:53
+================================================================
+
+====== BASELINE DESIGN ======
+  L_tube = 1.0 m
+  D_int = 20 mm, D_ext = 24 mm
+  N_p = 2 passes
+  Pitch Ratio = 1.25
+  ---
+  Shell Diameter D_s = 0.1422 m
+  Number of Tubes = 9.3
+  Volume = 0.015890 m3
+  D/L Ratio = 0.1422
+  Tube-side dP = 627.88 Pa
+  Shell-side dP = 0.0962 Pa
+  Total dP = 627.97 Pa
+  Heat Duty = 14.49 kW
+  U_o = 83.35 W/m2/K
+
+====== OPTIMIZATION OBJECTIVES ======
+  1. Minimize Volume
+  2. Minimize D/L Ratio (Diameter to Height)
+  3. Pressure Drop < Baseline (627.97 Pa) - KEY CONSTRAINT
+
+====== SEARCH SPACE ======
+  L_tube: 0.5 to 3.0 m (step 0.1)
+  D_int: 10 to 36 mm (step 2)
+  Pitch Ratio: 1.25, 1.30
+  N_p: 2 (fixed - optimal for pressure drop)
+  Total configurations tested: 728
+  Designs meeting dP constraint: 223
+  Pareto-optimal designs: 217
+
+====== BEST DESIGN - PRESSURE DROP PRIORITY ======
+  (Weighting: 60% dP, 25% Volume, 15% D/L)
+  Parameters:
+    L_tube = 0.70 m
+    D_int = 26 mm, D_ext = 30 mm
+    Pitch Ratio = 1.25
+  Results:
+    Shell Diameter = 0.1837 m
+    Number of Tubes = 10.6
+    Volume = 0.018560 m3 (16.8% vs baseline)
+    D/L Ratio = 0.2625 (-84.5% vs baseline)
+    Total dP = 147.50 Pa (76.5% reduction)
+    Score = 0.2903
+
+====== BEST DESIGN - BALANCED ======
+  (Weighting: 40% dP, 35% Volume, 25% D/L)
+  Parameters:
+    L_tube = 0.90 m
+    D_int = 24 mm, D_ext = 28 mm
+    Pitch Ratio = 1.25
+  Results:
+    Shell Diameter = 0.1609 m
+    Number of Tubes = 8.9
+    Volume = 0.018291 m3 (15.1% vs baseline)
+    D/L Ratio = 0.1787 (-25.7% vs baseline)
+    Total dP = 304.26 Pa (51.5% reduction)
+    Score = 0.0892
+
+====== BEST DESIGN - VOLUME PRIORITY ======
+  (Weighting: 30% dP, 50% Volume, 20% D/L)
+  Parameters:
+    L_tube = 0.70 m
+    D_int = 18 mm, D_ext = 22 mm
+    Pitch Ratio = 1.25
+  Results:
+    Shell Diameter = 0.1555 m
+    Number of Tubes = 14.5
+    Volume = 0.013289 m3 (-16.4% vs baseline)
+    D/L Ratio = 0.2221 (-56.1% vs baseline)
+    Total dP = 416.51 Pa (33.7% reduction)
+    Score = 0.0706
+
+====== PARETO-OPTIMAL DESIGNS ======
+Top 10 Pareto-optimal designs (sorted by pressure drop):
+
+Design 1:
+  L=0.50m, D_int=36mm, pitch=1.30
+  Vol=0.025156m3, D/L=0.5062, dP=31.31Pa
+
+Design 2:
+  L=0.50m, D_int=36mm, pitch=1.25
+  Vol=0.023647m3, D/L=0.4908, dP=31.35Pa
+
+Design 3:
+  L=0.50m, D_int=34mm, pitch=1.25
+  Vol=0.022340m3, D/L=0.4770, dP=36.48Pa
+
+Design 4:
+  L=0.50m, D_int=32mm, pitch=1.25
+  Vol=0.021046m3, D/L=0.4630, dP=42.89Pa
+
+Design 5:
+  L=0.60m, D_int=36mm, pitch=1.30
+  Vol=0.026165m3, D/L=0.3927, dP=45.01Pa
+
+Design 6:
+  L=0.60m, D_int=36mm, pitch=1.25
+  Vol=0.024626m3, D/L=0.3810, dP=45.04Pa
+
+Design 7:
+  L=0.50m, D_int=30mm, pitch=1.30
+  Vol=0.021038m3, D/L=0.4629, dP=50.98Pa
+
+Design 8:
+  L=0.50m, D_int=30mm, pitch=1.25
+  Vol=0.019766m3, D/L=0.4487, dP=51.04Pa
+
+Design 9:
+  L=0.60m, D_int=34mm, pitch=1.25
+  Vol=0.023255m3, D/L=0.3702, dP=52.41Pa
+
+Design 10:
+  L=0.70m, D_int=36mm, pitch=1.30
+  Vol=0.027112m3, D/L=0.3172, dP=61.21Pa
+
+====== KEY INSIGHTS ======
+1. Tube-side pressure drop (627.88 Pa) dominates total dP
+2. Shell-side dP (0.0962 Pa) is negligible
+3. Larger tube diameter reduces dP but increases volume
+4. Longer tubes improve D/L ratio significantly
+5. N_p=2 is optimal; higher passes dramatically increase dP
+6. Trade-off exists: cannot simultaneously minimize volume and dP
+7. Best balanced design uses longer tubes with larger diameter
+
+====== RECOMMENDATIONS ======
+1. For minimum pressure drop: Use D_int=26mm, L=0.70m
+2. For balanced performance: Use D_int=24mm, L=0.90m
+3. Keep N_p=2 passes to minimize tube-side dP
+4. Pitch ratio has minimal impact; use 1.25 (TEMA minimum)
+5. Baffle parameters have negligible effect on objectives
+
+================================================================
+                    END OF REPORT
+================================================================

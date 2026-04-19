@@ -1,0 +1,136 @@
+================================================================
+  HEATER DESIGN PARAMETRIC OPTIMIZATION STUDY - V2
+  Generated: 12-Apr-2026 16:22:30
+================================================================
+
+OBJECTIVES:
+  1. Minimize furnace total volume
+  2. Minimize D/H ratio for radiant zone
+  3. Minimize W/H ratio for convective zone
+  4. Minimize pressure drop (soft constraint)
+
+METHODOLOGY:
+  - Single parameter sensitivity studies (5 parameters)
+  - Combined 5-parameter grid optimization
+  - Weighted multi-objective scoring
+
+FIXED PARAMETERS:
+  T_salt_in:        586.80 C
+  T_salt_out:       620.00 C
+  m_gas_factory:    0.002126 kg/s
+  m_oil:            0.003486 kg/s
+
+VARIABLE PARAMETERS (5 total):
+  1. d_tube_ID_heat  - Radiant tube inner diameter
+  2. D_coil_heat     - Radiant coil diameter
+  3. p_coil_heat     - Radiant coil pitch
+  4. d_tube_OD_conv  - Convection tube outer diameter
+  5. n_conv_parallel - Number of parallel convection passes
+
+================================================================
+  BASELINE DESIGN
+================================================================
+  Parameters:
+    d_tube_ID_heat: 0.035 m (OD: 0.045 m)
+    D_coil_heat:    1.000 m
+    D_shell_heat:   1.400 m
+    p_coil_heat:    0.060 m
+    d_tube_OD_conv: 0.022 m (ID: 0.014 m)
+    n_conv_parallel: 4
+  Radiant Zone:
+    Height:         0.780 m
+    Volume:         1.2007 m³
+    D/H Ratio:      1.795
+  Convection Zone:
+    Width:          0.990 m
+    Height:         0.055 m
+    Volume:         0.0539 m³
+    W/H Ratio:      17.999
+  Total:
+    Total Volume:   1.2546 m³
+    Radiant DP:     47574 Pa (0.48 bar)
+    Convection DP:  1862 Pa
+    Total DP:       49436 Pa (0.494 bar)
+
+================================================================
+  SENSITIVITY ANALYSIS KEY FINDINGS
+================================================================
+  1. Tube Inner Diameter (d_tube_ID_heat):
+     - STRONGEST impact on pressure drop
+     - Larger ID dramatically reduces DP (DP ~ 1/ID^5 approx)
+     - Minor effect on volume
+
+  2. Coil Diameter (D_coil_heat):
+     - Affects tube length and heat transfer area
+     - Larger coil = larger volume but can reduce height
+     - Trade-off with D/H ratio
+
+  3. Coil Pitch (p_coil_heat):
+     - Directly affects radiant zone height
+     - Larger pitch = taller coil = lower D/H ratio
+     - Minor DP impact
+
+  4. Convection Tube Diameter:
+     - Affects number of rows required
+     - Larger tubes = fewer rows but larger spacing
+     - Moderate DP impact
+
+  5. Parallel Passes:
+     - More passes = lower velocity = lower DP
+     - Trade-off with heat transfer coefficient
+
+================================================================
+  OPTIMIZED DESIGN (Best Combined Objective)
+================================================================
+  Optimized Parameters:
+    d_tube_ID_heat: 0.048 m (vs baseline 0.035 m)
+    d_tube_OD_heat: 0.058 m
+    D_coil_heat:    0.900 m (vs baseline 1.000 m)
+    D_shell_heat:   1.300 m
+    p_coil_heat:    0.055 m (vs baseline 0.060 m)
+    d_tube_OD_conv: 0.030 m (vs baseline 0.022 m)
+    n_conv_parallel: 6 (vs baseline 4)
+
+  Optimized Results:
+    Radiant Volume:   0.8030 m³ (-33.1% vs baseline)
+    Convection Vol:   0.0634 m³ (17.6% vs baseline)
+    Total Volume:     0.8664 m³ (-30.9% vs baseline)
+    D/H Radiant:      2.149 (19.7% vs baseline 1.795)
+    W/H Convection:   12.257 (-31.9% vs baseline 17.999)
+    Radiant DP:       7986 Pa (83.2% reduction)
+    Convection DP:    198 Pa
+    Total DP:         8184 Pa (83.4% reduction)
+
+================================================================
+  RECOMMENDATIONS FOR FURTHER OPTIMIZATION
+================================================================
+  1. TUBE DIAMETER: Consider even larger tube IDs (45-50mm)
+     to further reduce pressure drop. This is the most
+     effective parameter for DP reduction.
+
+  2. COIL CONFIGURATION: Explore non-helical arrangements
+     or multi-layer coils to reduce height while
+     maintaining heat transfer area.
+
+  3. CONVECTION ZONE: Increase parallel passes to 6-8
+     to reduce velocities and pressure drop.
+
+  4. MATERIALS: Consider higher conductivity tube materials
+     to reduce required heat transfer area.
+
+  5. CFD VALIDATION: Run detailed CFD simulations on
+     optimal configurations to validate assumptions.
+
+================================================================
+  STUDY STATISTICS
+================================================================
+  Total configurations evaluated: 576
+  Configurations meeting DP constraint: 520
+  Min/Max Volume: 0.8453 / 1.9242 m³
+  Min/Max DP: 8184 / 51714 Pa
+  Min/Max D/H Radiant: 1.161 / 3.864
+  Min/Max W/H Convection: 12.257 / 24.042
+
+================================================================
+  END OF REPORT
+================================================================

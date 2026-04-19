@@ -1,0 +1,50 @@
+================================================================
+  HEATER DESIGN PARAMETRIC OPTIMIZATION STUDY
+  Generated: 12-Apr-2026 16:17:56
+================================================================
+
+OBJECTIVES:
+  1. Minimize furnace total volume
+  2. Minimize D/H ratio for radiant zone
+  3. Minimize W/H ratio for convective zone
+  4. Constraint: Pressure drop <= Baseline
+
+FIXED PARAMETERS:
+  T_salt_in:        586.80 C
+  T_salt_out:       620.00 C
+  m_gas_factory:    0.002126 kg/s
+  m_oil:            0.003486 kg/s
+
+================================================================
+  BASELINE DESIGN
+================================================================
+  Radiant Zone:
+    D_coil_heat:    1.000 m
+    D_shell_heat:   1.400 m
+    p_coil_heat:    0.060 m
+    Height:         0.780 m
+    Volume:         1.2007 m³
+    D/H Ratio:      1.795
+  Convection Zone:
+    d_tube_OD_conv: 0.022 m
+    n_conv_parallel: 4
+    Width:          0.990 m
+    Height:         0.055 m
+    Volume:         0.0539 m³
+    W/H Ratio:      17.999
+  Total:
+    Total Volume:   1.2546 m³
+    Pressure Drop:  49436 Pa (0.494 bar)
+
+================================================================
+  RECOMMENDATIONS FOR FURTHER OPTIMIZATION
+================================================================
+  1. Consider finer grid search around optimal region
+  2. Investigate tube wall thickness optimization
+  3. Explore alternative coil configurations
+  4. Consider multi-objective Pareto optimization
+  5. Validate with detailed CFD simulation
+
+================================================================
+  END OF REPORT
+================================================================

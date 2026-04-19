@@ -1,0 +1,53 @@
+=============================================================
+   HEAT EXCHANGER PARAMETRIC OPTIMIZATION STUDY
+   Generated: 12-Apr-2026 16:47:04
+=============================================================
+
+--- BASELINE DESIGN ---
+  Tube Length:        1.00 m
+  Internal Diameter:  20.0 mm
+  External Diameter:  24.0 mm
+  Number of Passes:   2
+  Pitch Ratio:        1.25
+  Shell Diameter:     0.1422 m
+  Volume:             0.015890 m3
+  D/L Ratio:          0.1422
+  Tube-side dP:       627.88 Pa
+  Shell-side dP:      0.0962 Pa
+  Total dP:           627.97 Pa
+  Heat Duty:          14.49 kW
+  U_o (calc):         83.35 W/m2/K
+
+--- OPTIMIZATION OBJECTIVES ---
+  1. Minimize volume
+  2. Minimize D/L ratio
+  3. Pressure drop < baseline (KEY CONSTRAINT)
+
+--- TOP 10 OPTIMIZED DESIGNS ---
+(Ranked by composite score: 50% dP reduction + 30% vol reduction + 20% D/L reduction)
+
+Rank 1:
+  L_tube=1.25m, N_p=2, D_int=24mm, pitch=1.25
+  D_s=0.1427m, Volume=0.019981m3, D/L=0.1141
+  dP_tube=586.75Pa, dP_shell=0.0493Pa, dP_total=586.80Pa
+  Score=-0.0049
+  Improvements: Vol -25.7%, D/L 19.8%, dP 6.6%
+
+Rank 2:
+  L_tube=1.25m, N_p=2, D_int=24mm, pitch=1.30
+  D_s=0.1467m, Volume=0.021140m3, D/L=0.1174
+  dP_tube=586.75Pa, dP_shell=0.0349Pa, dP_total=586.79Pa
+  Score=-0.0314
+  Improvements: Vol -33.0%, D/L 17.5%, dP 6.6%
+
+
+--- STUDY INSIGHTS ---
+1. Increasing tube length reduces shell diameter and D/L ratio
+2. Higher number of passes increases pressure drop significantly
+3. Larger tube diameter reduces pressure drop but increases volume
+4. Pitch ratio has moderate effect on shell diameter
+5. Best designs use longer tubes (1.5-2.0m) with 2 passes
+
+=============================================================
+   END OF REPORT
+=============================================================
