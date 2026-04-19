@@ -1,0 +1,286 @@
+NULL;
+3rd Year Project, Heating System Design
+Pyrolizer Heating Jacket
+
+
+
+Pyrolizer Heating Jacket
+My role is to simply provide a certain amount of energy to the surface of the wall. Everything is simulated as if the heating jacket is concurrent pipes.
+
+restart;
+
+print("====Key Equations====");
+eq1 := Q__req = m*Cp*(T__hot1 - T__hot2); #Energy Balance from page 478 fundametals of heat and mass transfer
+eq2 := Q__req = h__j*A*DeltaT__lm;        #Page 483 fundametals of heat and mass transfer
+DeltaT__lm := ((T__hot1 - T__cold)-(T__hot2 - T__cold))/(ln((T__hot1-T__cold)/(T__hot2-T__cold))); #Page 482 fundametals of heat and mass transfer
+R__gas := 8.314:
+
+                    "====Key Equations===="
+
+            eq1 := Q__req = m Cp (T__hot1 - T__hot2)
+
+               eq2 := Q__req = h__j A DeltaT__lm
+
+                              T__hot1 - T__hot2  
+              DeltaT__lm := ---------------------
+                              /T__hot1 - T__cold\
+                            ln|-----------------|
+                              \T__hot2 - T__cold/
+
+#1 is in
+#2 is out
+#Hot is oil/salt/water
+#Cold is the wall
+
+
+print("====Specifications====");
+T__hot1 := 611.7223193 + 273.15; #Kelvin (Defined in Furnace Specs)(Assumes no loss of energy in pipes)
+m := 0.7609; #kg/s (From Furnace)
+
+D__pyrolizer := 0.318; #m
+D__jacket := 0.358; #m
+L__1 := 2.05;  #m # heating zone
+L__2 := 2.57;  #m # constant temp zone
+Q__1 := 23550; #W # Required energy for pyrolizer heating zone
+Q__2 := 20070; #W # Energy needed to maintain temperature
+
+T__cold_in := 280 + 273.15;  #K, wall at biomass inlet
+T__cold_out := 550 + 273.15; #K, wall at end of L1 / all of L2
+
+
+print ("====Properties of ternary eutectic mixture====");
+rho := 2050; #kg/m3    
+Cp := 2300; #J/kg/K     
+k__fluid := 0.55; #W/m/K 
+F_mu__salt := T_K -> 0.0852*exp((3.51e4)/(R__gas*T_K));
+
+
+
+
+
+                    "====Specifications===="
+
+                     T__hot1 := 884.8723193
+
+                          m := 0.7609
+
+                     D__pyrolizer := 0.318
+
+                       D__jacket := 0.358
+
+                          L__1 := 2.05
+
+                          L__2 := 2.57
+
+                         Q__1 := 23550
+
+                         Q__2 := 20070
+
+                      T__cold_in := 553.15
+
+                     T__cold_out := 823.15
+
+        "====Properties of ternary eutectic mixture===="
+
+                          rho := 2050
+
+                           Cp := 2300
+
+                        k__fluid := 0.55
+
+F_mu__salt := proc (T_K) options operator, arrow; 0.852e-1*exp(0\
+
+  .351e5/((R__gas*T_K))) end proc
+
+
+print ("====Assume temperature change is constant====");
+
+T__hot_mid := T__hot1 - Q__1/(m*Cp); #salt temp leaving L1
+T__hot2 := T__hot_mid - Q__2/(m*Cp); #salt temp leaving L2
+T__hot_avg1 := (T__hot1 + T__hot_mid)/2; # average salt temp in L1
+T__hot_avg2 := (T__hot_mid + T__hot2)/2; # average salt temp in L2
+        "====Assume temperature change is constant===="
+
+                   T__hot_mid := 871.4157147
+
+                     T__hot2 := 859.9476020
+
+                   T__hot_avg1 := 878.1440170
+
+                   T__hot_avg2 := 865.6816584
+
+# Cannels calculations
+
+N__ch := 10;  # number of axial channels — tune this
+t__fin := 0.005; # m, fin/wall between channels
+
+w__ch := (Pi*D__pyrolizer/N__ch) - t__fin;  # circumferential width per channel
+GAP := (D__jacket - D__pyrolizer)/2;         # radial height (unchanged)
+A__c := w__ch * GAP;                         # flow area per channel
+D__h := 2*w__ch*GAP/(w__ch + GAP);           # hydraulic diameter
+
+v := m/(rho * N__ch * A__c);  # velocity per channel
+                          N__ch := 10
+
+                        t__fin := 0.005
+
+                     w__ch := 0.09490264640
+
+                      GAP := 0.0200000000
+
+                     A__c := 0.001898052928
+
+                     D__h := 0.03303758420
+
+                       v := 0.01955534149
+
+#Size CHECK
+#cooling, Page 491, fundametals of heat and mass transfer. Uses Sieder-Tate correlation
+
+# For Section 1
+Re__1 := rho*v*D__h/F_mu__salt(T__hot_avg1);
+Pr__1 := Cp*F_mu__salt(T__hot_avg1)/k__fluid;
+Gz__1 := Re__1*Pr__1*D__h/L__1;
+Nu__1 := 1.86*Gz__1^(1/3) * (F_mu__salt(T__hot_avg1)/F_mu__salt(T__cold_out))^0.14;
+h__1  := Nu__1*k__fluid/D__h; #(Book uses U)
+
+# For Section 2
+Re__2 := rho*v*D__h/F_mu__salt(T__hot_avg2);
+Pr__2 := Cp*F_mu__salt(T__hot_avg2)/k__fluid;
+Gz__2 := Re__2*Pr__2*D__h/L__2;
+Nu__2 := 1.86*Gz__2^(1/3) * (F_mu__salt(T__hot_avg2)/F_mu__salt(T__cold_out))^0.14;
+h__2  := Nu__2*k__fluid/D__h; #(Book uses U)
+
+                     Re__1 := 0.1269577650
+
+                      Pr__1 := 43624.79775
+
+                      Gz__1 := 89.25799288
+
+                      Nu__1 := 7.946934675
+
+                      h__1 := 132.2982348
+
+                     Re__2 := 0.1184681029
+
+                      Pr__2 := 46751.03833
+
+                      Gz__2 := 71.19800988
+
+                      Nu__2 := 7.441856974
+
+                      h__2 := 123.8898495
+
+# Section 1: co-current, wall heated up
+dT1__in := T__hot1 - T__cold_in; 
+dT1__out := T__hot_mid - T__cold_out;  
+LMTD__1 := (dT1__in - dT1__out)/ln(dT1__in/dT1__out);
+
+# Section 2: wall constant
+dT2__in := T__hot_mid - T__cold_out;
+dT2__out := T__hot2 - T__cold_out;
+LMTD__2 := (dT2__in - dT2__out)/ln(dT2__in/dT2__out);
+
+# Required Area vs Available Area
+A__req1 := Q__1/(h__1 * LMTD__1);
+A__av1  := Pi * D__pyrolizer * L__1;
+
+A__req2 := Q__2/(h__2 * LMTD__2);
+A__av2  := Pi * D__pyrolizer * L__2;
+
+# Check if design is valid
+if A__av1 > A__req1 and A__av2 > A__req2 then 
+    print("Design Successful");
+else 
+    print("Design Failed");
+end if;
+                     dT1__in := 331.7223193
+
+                     dT1__out := 48.2657147
+
+                     LMTD__1 := 147.0533418
+
+                     dT2__in := 48.2657147
+
+                     dT2__out := 36.7976020
+
+                     LMTD__2 := 42.27271157
+
+                     A__req1 := 1.210492111
+
+                     A__av1 := 2.048004251
+
+                     A__req2 := 3.832229774
+
+                     A__av2 := 2.567498012
+
+                        "Design Failed"
+
+#Assumes no added pressure from coiling up and down sides, gravity pressure is negligable.
+# Laminar friction factor for straight duct
+f__1 := 16/Re__1;  # Fanning friction factor, laminar
+DP__1 := 4*f__1*(L__1/D__h)*(rho*v^2/2);
+
+f__2 := 16/Re__2;
+DP__2 := 4*f__2*(L__2/D__h)*(rho*v^2/2);
+
+DP__total := DP__1 + DP__2;
+
+                      f__1 := 126.0261631
+
+                      DP__1 := 12260.86069
+
+                      f__2 := 135.0574510
+
+                      DP__2 := 16472.44456
+
+                    DP__total := 28733.30525
+
+#Summary of design, Bellow script generated using CLAUDE OPUS 4.6
+
+print("====Summary====");
+printf("Section 1 (Heating Zone, L1 = %.2f m):\n", L__1);
+printf("  Re = %.4f\n", Re__1);
+printf("  h  = %.2f W/m2K\n", h__1);
+printf("  T_salt_in  = %.2f K (%.2f C)\n", T__hot1, T__hot1-273.15);
+printf("  T_salt_out = %.2f K (%.2f C)\n", T__hot_mid, T__hot_mid-273.15);
+printf("  T_wall_in  = %.2f K (%.2f C)\n", T__cold_in, T__cold_in-273.15);
+printf("  T_wall_out = %.2f K (%.2f C)\n", T__cold_out, T__cold_out-273.15);
+printf("  A_req = %.4f m2, A_av = %.4f m2\n", A__req1, A__av1);
+printf("\nSection 2 (Constant Temp Zone, L2 = %.2f m):\n", L__2);
+printf("  Re = %.4f\n", Re__2);
+printf("  h  = %.2f W/m2K\n", h__2);
+printf("  T_salt_in  = %.2f K (%.2f C)\n", T__hot_mid, T__hot_mid-273.15);
+printf("  T_salt_out = %.2f K (%.2f C)\n", T__hot2, T__hot2-273.15);
+printf("  T_wall     = %.2f K (%.2f C)\n", T__cold_out, T__cold_out-273.15);
+printf("  A_req = %.4f m2, A_av = %.4f m2\n", A__req2, A__av2);
+printf("\nFlow:\n");
+printf("  v = %.4f m/s\n", v);
+printf("  DP_total = %.2f kPa\n", DP__total/1000);
+print("===============");
+                       "====Summary===="
+
+Section 1 (Heating Zone, L1 = 2.05 m):
+  Re = 0.1270
+  h  = 132.30 W/m2K
+  T_salt_in  = 884.87 K (611.72 C)
+  T_salt_out = 871.42 K (598.27 C)
+  T_wall_in  = 553.15 K (280.00 C)
+  T_wall_out = 823.15 K (550.00 C)
+  A_req = 1.2105 m2, A_av = 2.0480 m2
+
+Section 2 (Constant Temp Zone, L2 = 2.57 m):
+  Re = 0.1185
+  h  = 123.89 W/m2K
+  T_salt_in  = 871.42 K (598.27 C)
+  T_salt_out = 859.95 K (586.80 C)
+  T_wall     = 823.15 K (550.00 C)
+  A_req = 3.8322 m2, A_av = 2.5675 m2
+
+Flow:
+  v = 0.0196 m/s
+  DP_total = 28.73 kPa
+
+                       "==============="
+
+

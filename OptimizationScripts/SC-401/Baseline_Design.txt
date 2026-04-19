@@ -1,0 +1,211 @@
+NULL;
+3rd Year Project, Heating System Design
+Screw Seperator Cooling Jacket
+
+
+
+Screw Seperator Cooling Jacket
+My role is to simply remove a certain amount of energy from the surface of the wall. Everyhting is simulated as if the cooling jacket is a concurrent pipes.
+The primary change is that the path length of the helical coil will have to increase as time goes on to simulate the increasing diameter of the screw, and this 
+will have to be reflected by the pitch of this change.
+restart;
+
+print("====Key Equations====");
+eq1 := Q__req = m*Cp*(T__cold2 - T__cold1); #Energy Balance from page 478 fundametals of heat and mass transfer (Shows energy extraction)
+eq2 := Q__req = h__j*A*DeltaT__lm;        #Page 483 fundametals of heat and mass transfer
+DeltaT__lm := ((T__hot1 - T__cold2)-(T__hot2 - T__cold1))/(ln((T__hot1-T__cold2)/(T__hot2-T__cold1))); #Page 482 fundametals of heat and mass transfer
+                    "====Key Equations===="
+
+           eq1 := Q__req = m Cp (T__cold2 - T__cold1)
+
+               eq2 := Q__req = h__j A DeltaT__lm
+
+                   T__hot1 - T__cold2 - T__hot2 + T__cold1
+     DeltaT__lm := ---------------------------------------
+                             /T__hot1 - T__cold2\         
+                           ln|------------------|         
+                             \T__hot2 - T__cold1/         
+
+#1 is inlet
+#2 is outlet
+#Hot is wall
+#Cold is the fluid
+
+
+print("====Specifications====");
+T__cold1 := 281.001822 + 273.15; #Kelvin #depends on temperature in #NEED SPECIFYING
+m := 0.25; #kg/s
+T__hot1 := 500 + 273.15; #Kelvin #depends on energy into seperator #NEED SPECIFYING
+T__hot2 := 285 + 273.15; #Kelvine # The desired temperature of wall at end of seperator. #Need specifying
+
+#Constant diameter separator
+L__jacket := 1.2; #m #Length of Screw Conveyor
+D__separator := 0.1016; #m
+GAP := 0.01; #m (10 mm annular gap)
+D__jacket := D__separator + 2*GAP;
+
+
+
+
+Q__req := 1100; #W #Required energy to be extracted
+
+
+print ("====Properties of Helisol 5A, tube side====");
+rho := 689.5; #kg/m3
+Cp := 2150; #J/kg/K     
+mu := 0.41e-3; #Pa/s
+k__fluid := 0.076 #W/m/K 
+
+
+
+
+
+
+
+                    "====Specifications===="
+
+                     T__cold1 := 554.151822
+
+                           m := 0.25
+
+                       T__hot1 := 773.15
+
+                       T__hot2 := 558.15
+
+                        L__jacket := 1.2
+
+                     D__separator := 0.1016
+
+                          GAP := 0.01
+
+                      D__jacket := 0.1216
+
+                         Q__req := 1100
+
+         "====Properties of Helisol 5A, tube side===="
+
+                          rho := 689.5
+
+                           Cp := 2150
+
+                         mu := 0.00041
+
+                       k__fluid := 0.076
+
+#helical cannels (If pressure is too high, consider splitting channels into two, but will half velocity and Re.)
+w := 0.03; #m #Channel width
+t := 0.02; #m #Wall thickness
+P := w + t; #m #pitch
+
+N__turn := L__jacket/P; #number of turns
+L__turn := ((Pi*D__separator)**2 + P**2)**(1/2); #m #Length per turn
+L__coil := N__turn * L__turn; #m
+A__c := GAP*w;
+D__h := 2*GAP*w/(GAP +w);
+D__coil := (D__jacket + D__separator)/2;
+                           w := 0.03
+
+                           t := 0.02
+
+                           P := 0.05
+
+                     N__turn := 24.00000000
+
+                    L__turn := 0.3230782933
+
+                     L__coil := 7.753879039
+
+                         A__c := 0.0003
+
+                     D__h := 0.01500000000
+
+                    D__coil := 0.1116000000
+
+T__cold2 := solve(eq1,T__cold2);
+v := m/(rho*A__c); #m/s
+A := Pi * D__separator*L__jacket;
+                    T__cold2 := 556.1983336
+
+                        v := 1.208605270
+
+                       A := 0.3830229764
+
+Re__1 := rho*v*D__h/mu;
+
+                      Re__1 := 30487.80490
+
+
+
+
+Pr := (Cp *mu)/k__fluid;
+#cooling, Page 491, fundametals of heat and mass transfer #Updated to use Seban and McLaughlin correlation(For helical coils, not channeled jackets, is this okay?)
+Nu := 0.023*Re__1**0.85*Pr**0.3*(D__h/D__coil)**0.1; 
+h__j := Nu*k__fluid/D__h; #heat transfer coefficient (Book uses U)
+                       Pr := 11.59868421
+
+                       Nu := 254.3316407
+
+                      h__j := 1288.613646
+
+print("====Summary====");
+DeltaT__lm := DeltaT__lm;
+Re__1 := Re__1;
+v := v;               #m/s
+T__cold1 := T__cold1; #kelvin
+T__cold2 := T__cold2; #kelvin
+T__hot1 := T__hot1;   #Kelvin
+T__hot2 := T__hot2;   #Kelvin
+print("===============");
+                       "====Summary===="
+
+                   DeltaT__lm := 53.32054124
+
+                      Re__1 := 30487.80490
+
+                        v := 1.208605270
+
+                     T__cold1 := 554.151822
+
+                    T__cold2 := 556.1983336
+
+                       T__hot1 := 773.15
+
+                       T__hot2 := 558.15
+
+                       "==============="
+
+# Required Area vs Available Area
+A__req := Q__req / (h__j * DeltaT__lm);
+A__av := 3.14 * D__separator * L__jacket;
+
+# Check if design is valid
+if A__av > A__req then 
+    print("Design Successful");
+else 
+    print("Design Failed");
+end if;
+                    A__req := 0.01600941306
+
+                       A__av := 0.3828288
+
+                      "Design Successful"
+
+#Pressure calculations(Used the Mishra & Gupta correlation)
+
+
+
+f__c := 0.3164/Re__1^0.25 + 0.03*(D__h/D__coil)^0.5;
+                     f__c := 0.03494298748
+
+#Pressure added due to pumping up system (Against gravity)
+DP__friction := 4*f__c*(L__coil/D__h)*((rho*v**2)/2); #Pa
+DP__total := DP__friction; #Pa
+DP__kPa := DP__total/1000; #kPa
+
+                  DP__friction := 36384.88686
+
+                    DP__total := 36384.88686
+
+                     DP__kPa := 36.38488686
+
+

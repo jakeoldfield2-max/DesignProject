@@ -1,0 +1,82 @@
+======================================================================
+FINAL OPTIMIZED DESIGN - MINIMUM PRESSURE DROP
+======================================================================
+Generated: 2026-04-12 17:18:16
+Configurations tested: 2800000
+Valid designs with DP < baseline: 1467325
+
+======================================================================
+BASELINE DESIGN (REFERENCE - INVALID)
+======================================================================
+  D_jacket = 0.358 m
+  GAP = 20.00 mm
+  N_ch = 10 channels
+  t_fin = 5.0 mm
+  No longitudinal fins
+  Velocity = 19.555 mm/s
+  DP_total = 28.73 kPa
+  S2 Area Margin = -49.3% (FAIL)
+
+======================================================================
+OPTIMAL DESIGN (MINIMUM PRESSURE DROP)
+======================================================================
+  D_jacket = 0.50000 m
+  GAP = 91.000 mm
+  N_ch = 7 channels
+  t_fin = 2.000 mm
+
+  LONGITUDINAL FINS (Rib Geometry Modification):
+    Number per channel = 9
+    Height = 18.158 mm
+    Thickness = 4.714 mm
+    Fin efficiency S1 = 0.8707
+    Fin efficiency S2 = 0.8777
+
+  FLOW PARAMETERS:
+    D_h = 60.915 mm
+    Velocity = 4.4059 mm/s
+    Re1 = 0.05274
+    Re2 = 0.04921
+
+  HEAT TRANSFER:
+    h1 = 65.650 W/m2K
+    h2 = 61.478 W/m2K
+    Area enhancement S1 = 2.994x
+    Area enhancement S2 = 3.010x
+    A_base2 = 2.5675 m2
+    A_eff2 = 7.7281 m2
+    A_req2 = 7.7227 m2
+
+  PERFORMANCE:
+    DP1 = 1.0991 kPa
+    DP2 = 1.4766 kPa
+    DP_total = 2.5757 kPa
+    DP REDUCTION = 91.04%
+    S1 Area Margin = 60.216%
+    S2 Area Margin = 0.071%
+    STATUS: DESIGN SUCCESSFUL
+
+======================================================================
+SUMMARY OF CHANGES FROM BASELINE
+======================================================================
+  GAP: 20.0 -> 91.0 mm (+355%)
+  N_ch: 10 -> 7
+  Fins: 0 -> 9 per channel
+  Fin height: 0 -> 18.2 mm
+  Velocity: 19.56 -> 4.41 mm/s (-77%)
+  DP: 28.73 -> 2.58 kPa (-91%)
+
+======================================================================
+KEY INSIGHT
+======================================================================
+
+The baseline design fails because Section 2 lacks sufficient heat
+transfer area. By adding longitudinal fins inside the channels,
+we INCREASE effective heat transfer area, which allows us to:
+
+  1. Use a LARGER annular gap (more space between pyrolizer and jacket)
+  2. Achieve LOWER flow velocity (same mass flow through larger area)
+  3. Obtain LOWER pressure drop (DP proportional to velocity squared)
+
+Result: 91% reduction in pressure drop
+while achieving a valid heat transfer design.

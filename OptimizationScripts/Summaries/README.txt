@@ -1,0 +1,3 @@
+These are the AI generated result reports that summarize the differences beteen the different parametric studies. the results of these were put back into MAPLE, and used as a reference.
+
+Important to notw for the Pyrolizer design, the ai made some changes to the design, which was flagged in the MAPLE check, these were fixed, and a manual study was done instead. the report is still good to view as it shows the changes it made. But this is not what was used in the report
