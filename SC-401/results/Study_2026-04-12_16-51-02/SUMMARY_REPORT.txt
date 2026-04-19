@@ -1,0 +1,76 @@
+============================================================
+  PARAMETRIC STUDY SUMMARY REPORT
+  Screw Separator Cooling Jacket - Pressure Drop Optimization
+============================================================
+Generated: 12-Apr-2026 16:51:32
+
+OBJECTIVE: Minimize pressure drop while maintaining valid design
+           (Available area >= Required area for heat transfer)
+
+------------------------------------------------------------
+FIXED PARAMETERS (Unit Design - Not Varied):
+------------------------------------------------------------
+  L_jacket     = 1.200 m    (Screw conveyor length)
+  D_separator  = 0.1016 m   (Separator diameter)
+  Q_req        = 1100 W     (Required heat extraction)
+  m_dot        = 0.25 kg/s  (Mass flow rate)
+  T_cold_in    = 281.0 C    (Coolant inlet temp)
+  T_hot_in     = 500.0 C    (Wall inlet temp)
+  T_hot_out    = 285.0 C    (Target wall outlet temp)
+
+------------------------------------------------------------
+VARIABLE PARAMETERS (Rib & Shell Geometry):
+------------------------------------------------------------
+  GAP    - Annular gap (shell geometry)
+  w      - Channel width (rib geometry)
+  t_wall - Wall thickness between channels (rib geometry)
+
+============================================================
+  RESULTS COMPARISON
+============================================================
+
+BASELINE DESIGN:
+  GAP     = 10.0 mm
+  w       = 30.0 mm
+  t_wall  = 20.0 mm
+  -----------------------
+  Pressure Drop = 36.38 kPa
+  Reynolds No.  = 30488
+  Heat Coeff.   = 1288.6 W/(m2K)
+  Design Valid  = true
+
+OPTIMIZED DESIGN:
+  GAP     = 22.0 mm
+  w       = 55.0 mm
+  t_wall  = 15.0 mm
+  -----------------------
+  Pressure Drop = 0.96 kPa
+  Reynolds No.  = 15838
+  Heat Coeff.   = 375.7 W/(m2K)
+  Design Valid  = true
+
+============================================================
+  IMPROVEMENT SUMMARY
+============================================================
+  Pressure Drop Reduction: 36.38 kPa -> 0.96 kPa
+  Percentage Improvement:  97.4%
+
+============================================================
+  KEY FINDINGS
+============================================================
+  1. Increasing GAP reduces velocity, lowering pressure drop
+  2. Increasing w (channel width) reduces friction losses
+  3. Decreasing t_wall increases N_turns but shortens L_coil
+  4. Trade-off exists: larger channels reduce h_j (heat transfer)
+  5. Optimal design balances low DP with adequate heat transfer
+
+============================================================
+  FILES GENERATED
+============================================================
+  Study1_SingleParameterSweeps.png   - Individual parameter effects
+  Study2_GAP_vs_ChannelWidth.png     - 2D contour: GAP vs w
+  Study3_GAP_vs_WallThickness.png    - 2D contour: GAP vs t_wall
+  Study4_3ParameterOptimization.png  - 3D scatter optimization
+  Study5_Comparison.png              - Bar chart comparison
+  SUMMARY_REPORT.txt                 - This file
+

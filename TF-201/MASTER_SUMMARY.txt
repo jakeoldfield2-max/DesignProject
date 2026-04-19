@@ -1,0 +1,214 @@
+================================================================================
+                    TORREFACTION HEATING JACKET OPTIMIZATION
+                         MASTER SUMMARY OF PARAMETRIC STUDIES
+                              Generated: 12-Apr-2026
+================================================================================
+
+OBJECTIVE
+---------
+Minimize pressure drop across the helical heating jacket while:
+  - Keeping mass flow rate fixed at 0.25 kg/s
+  - Maintaining thermal design validity (A_available >= A_required)
+  - Staying below 8.5 kPa pressure drop constraint
+  - Not modifying torrefaction unit dimensions (D_pyrolizer=0.50m, L=4.20m)
+
+PARAMETERS VARIED (Channel & Jacket Geometry)
+----------------------------------------------
+  1. D_jacket - Jacket inner diameter [m]
+  2. w        - Helical channel width [m]
+  3. t        - Wall/rib thickness [m]
+
+PARAMETERS HELD FIXED
+---------------------
+  - D_pyrolizer = 0.50 m (torrefaction unit design)
+  - L           = 4.20 m (pyrolizer length)
+  - m_dot       = 0.25 kg/s (mass flow rate)
+  - T_hot_in    = 575.16 K (302 C)
+  - T_wall      = 553.15 K (280 C)
+  - Q_req       = 11,290 W (heat duty)
+  - Fluid: Helisol 5A (rho=689.5, Cp=2150, mu=0.41e-3, k=0.076)
+
+================================================================================
+                              RESULTS SUMMARY
+================================================================================
+
+BASELINE DESIGN (Original)
+--------------------------
+  D_jacket = 0.530 m (53.0 cm)
+  w        = 0.050 m (5.0 cm)
+  t        = 0.050 m (5.0 cm)
+  Pitch    = 0.100 m (10.0 cm)
+  Turns    = 42
+  ---------------------------------
+  PRESSURE DROP = 8.56 kPa  [ABOVE LIMIT]
+
+INITIAL STUDY - BEST RESULT
+---------------------------
+  D_jacket = 0.528 m (52.8 cm)
+  w        = 0.118 m (11.8 cm)
+  t        = 0.100 m (10.0 cm)
+  Pitch    = 0.218 m (21.8 cm)
+  Turns    = 19
+  ---------------------------------
+  PRESSURE DROP = 0.80 kPa
+  REDUCTION:     90.7% from baseline
+
+EXTENDED OPTIMIZATION - BEST RESULT
+-----------------------------------
+  D_jacket = 0.552 m (55.2 cm)
+  w        = 0.062 m (6.2 cm)
+  t        = 0.330 m (33.0 cm)
+  Pitch    = 0.392 m (39.2 cm)
+  Turns    = 11
+  GAP      = 0.026 m (2.6 cm)
+  D_h      = 0.037 m (3.7 cm)
+  Velocity = 0.22 m/s
+  ---------------------------------
+  PRESSURE DROP = 0.31 kPa
+  REDUCTION:     96.4% from baseline
+
+THEORETICAL MINIMUM (at 5 turns)
+--------------------------------
+  With pitch = 0.84 m (L/5 turns), the pressure drop approaches ~0.15-0.20 kPa
+  However, this may not be practical for uniform heat transfer.
+
+================================================================================
+                            KEY PHYSICAL INSIGHTS
+================================================================================
+
+1. PRESSURE DROP EQUATION:
+   DP = 4 * f_c * (L_coil / D_h) * (rho * v^2 / 2)
+
+   Where:
+   - L_coil = N_turns * L_turn (total helical path length)
+   - D_h = hydraulic diameter = 2*GAP*w/(GAP+w)
+   - v = m_dot / (rho * GAP * w) (fluid velocity)
+
+2. DOMINANT FACTORS:
+   a) NUMBER OF TURNS (N = L / (w+t))
+      - Reducing turns has the STRONGEST effect on DP
+      - Each halving of turns roughly halves L_coil
+      - Achieved by increasing pitch (w + t)
+
+   b) FLUID VELOCITY (scales as v^2)
+      - Velocity depends on flow area = GAP * w
+      - Larger D_jacket increases GAP
+      - Larger w increases channel area
+
+   c) HYDRAULIC DIAMETER
+      - Larger D_h reduces friction losses
+      - Increases with both GAP and w
+
+3. TRADE-OFF DISCOVERED:
+   - Initial studies suggested larger w (channel width) is best
+   - Extended studies revealed larger t (rib thickness) is MORE effective
+   - This is because t directly reduces number of turns without affecting
+     the flow area as much
+
+================================================================================
+                        PRACTICAL DESIGN RECOMMENDATIONS
+================================================================================
+
+OPTION A: MODERATE OPTIMIZATION (Manufacturing-friendly)
+---------------------------------------------------------
+  D_jacket = 0.55 m (55 cm)
+  w        = 0.10 m (10 cm)
+  t        = 0.15 m (15 cm)
+  Expected DP ~ 0.6 kPa (93% reduction)
+  Turns    ~ 17
+
+  Advantages:
+  - Reasonable channel width for machining
+  - Moderate rib thickness
+  - Good balance of pressure drop vs complexity
+
+OPTION B: AGGRESSIVE OPTIMIZATION (Lowest DP)
+---------------------------------------------
+  D_jacket = 0.55 m (55 cm)
+  w        = 0.06 m (6 cm)
+  t        = 0.35 m (35 cm)
+  Expected DP ~ 0.3 kPa (96% reduction)
+  Turns    ~ 10
+
+  Advantages:
+  - Minimum pressure drop achievable
+  - Few turns simplifies fabrication
+
+  Considerations:
+  - Larger rib thickness uses more material
+  - Verify heat transfer uniformity with CFD
+  - Ensure flow distribution at inlet
+
+OPTION C: BALANCED DESIGN (Recommended)
+---------------------------------------
+  D_jacket = 0.55 m (55 cm)
+  w        = 0.08 m (8 cm)
+  t        = 0.25 m (25 cm)
+  Expected DP ~ 0.4 kPa (95% reduction)
+  Turns    ~ 13
+
+  This balances:
+  - Manufacturing complexity
+  - Material usage
+  - Pressure drop minimization
+  - Heat transfer distribution
+
+================================================================================
+                              FILES GENERATED
+================================================================================
+
+INITIAL PARAMETRIC STUDY (results_2026-04-12_15-53-13/)
+-------------------------------------------------------
+  study1_Djacket_vs_w.png      - D_jacket vs channel width contour
+  study2_Djacket_vs_t.png      - D_jacket vs rib thickness contour
+  study3_w_vs_t.png            - Channel width vs rib thickness contour
+  study4_3D_valid_designs.png  - 3D scatter of valid designs
+  study5_sensitivity.png       - Sensitivity analysis (3 panels)
+  comparison_bar_chart.png     - Comparison of study optima
+  design_validity_map.png      - Valid/invalid design regions
+  SUMMARY_REPORT.txt           - Detailed initial study report
+  parametric_study_data.mat    - Raw MATLAB data
+
+ENHANCED OPTIMIZATION (results_enhanced_2026-04-12_15-56-36/)
+-------------------------------------------------------------
+  extended_w_vs_t_contour.png  - Extended range contour plot
+  number_of_turns.png          - Turns constraint visualization
+  DP_vs_turns.png              - Pressure drop vs number of turns
+  pareto_analysis.png          - Pareto front analysis
+  design_tradeoff.png          - Design trade-off visualization
+  final_comparison.png         - Final comparison bar chart
+  ENHANCED_SUMMARY.txt         - Extended study report
+  enhanced_optimization_data.mat - Raw MATLAB data
+
+MATLAB SCRIPTS
+--------------
+  torrefaction_heating_jacket.m         - Original function
+  parametric_study_pressure_drop.m      - Initial parametric study
+  enhanced_optimization.m               - Extended optimization
+
+================================================================================
+                             CONCLUSIONS
+================================================================================
+
+1. The baseline design (DP = 8.56 kPa) exceeds the 8.5 kPa limit.
+
+2. Through parametric optimization of channel and jacket geometry,
+   pressure drop can be reduced by up to 96% to approximately 0.3 kPa.
+
+3. The most effective parameter is RIB THICKNESS (t):
+   - Increasing t reduces number of helical turns
+   - Fewer turns = shorter flow path = lower DP
+
+4. JACKET DIAMETER (D_jacket) has secondary importance:
+   - Larger D_jacket increases annular gap
+   - Increases flow area and hydraulic diameter
+
+5. CHANNEL WIDTH (w) has diminishing returns:
+   - Helps reduce velocity but also affects pitch
+   - Optimal around 6-10 cm depending on t
+
+6. Recommended design: Option C (Balanced)
+   D_jacket = 55 cm, w = 8 cm, t = 25 cm
+   Expected DP = 0.4 kPa (95% reduction)
+
+================================================================================

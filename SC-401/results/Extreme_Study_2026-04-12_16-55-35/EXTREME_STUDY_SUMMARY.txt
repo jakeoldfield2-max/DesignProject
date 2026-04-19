@@ -1,0 +1,91 @@
+============================================================
+  EXTREME OPTIMIZATION STUDY - FINAL RESULTS
+  Screw Separator Cooling Jacket
+============================================================
+Generated: 12-Apr-2026 16:55:51
+
+============================================================
+  PROGRESSIVE OPTIMIZATION SUMMARY
+============================================================
+
+Study                |  GAP[mm] |    w[mm] |    t[mm] |    DP[kPa] |        h_j |  Reduction
+------------------------------------------------------------------------------------------
+Baseline             |     10.0 |     30.0 |     20.0 |     36.385 |     1288.6 |          -
+First Study          |     22.0 |     55.0 |     15.0 |      0.956 |      375.7 |      97.4%
+Refined Study        |     25.0 |     65.0 |     18.0 |      0.411 |      289.7 |      98.9%
+ULTIMATE OPTIMUM     |     38.0 |     93.0 |     30.0 |     0.0457 |      145.3 |      99.9%
+
+============================================================
+  ULTIMATE OPTIMUM - DETAILED RESULTS
+============================================================
+
+GEOMETRY:
+  GAP (annular gap)     = 38.00 mm
+  w (channel width)     = 93.00 mm
+  t_wall (wall thick.)  = 30.00 mm
+  Pitch (w + t_wall)    = 123.00 mm
+
+PERFORMANCE:
+  Pressure Drop         = 0.0457 kPa (45.7 Pa)
+  Heat Transfer Coeff   = 145.3 W/(m2K)
+  Reynolds Number       = 9309
+  Velocity              = 0.1026 m/s
+  Friction Factor       = 0.050862
+
+GEOMETRY DERIVED:
+  Number of Turns       = 9.8
+  Coil Length           = 3.34 m
+  Hydraulic Diameter    = 0.0540 m
+  Channel Area          = 0.003534 m2
+
+HEAT TRANSFER VALIDATION:
+  A_required            = 0.142026 m2
+  A_available           = 0.383023 m2
+  Safety Factor         = 2.7 (A_av/A_req)
+  Design Status         = VALID
+
+============================================================
+  CONSTRAINT ANALYSIS - WALL THICKNESS EFFECT
+============================================================
+
+t_wall[mm] |    GAP[mm] |      w[mm] | Min DP[kPa] |        h_j |         Re
+----------------------------------------------------------------------
+       3.0 |       35.0 |       85.0 |     0.0925 |      169.2 |      10163
+       5.0 |       35.0 |       85.0 |     0.0906 |      169.2 |      10163
+       8.0 |       35.0 |       85.0 |     0.0879 |      169.2 |      10163
+      10.0 |       35.0 |       85.0 |     0.0862 |      169.2 |      10163
+      15.0 |       35.0 |       85.0 |     0.0822 |      169.2 |      10163
+      20.0 |       35.0 |       85.0 |     0.0787 |      169.2 |      10163
+
+============================================================
+  KEY FINDINGS & RECOMMENDATIONS
+============================================================
+
+1. OPTIMAL PRESSURE DROP REDUCTION:
+   - Achieved 99.9% reduction from baseline
+   - From 36.38 kPa to 0.0457 kPa
+
+2. TRADE-OFF ANALYSIS:
+   - Heat transfer coefficient reduced from 1289 to 145 W/(m2K)
+   - Design remains valid with safety factor of 2.7
+   - Adequate thermal performance maintained
+
+3. PHYSICAL INSIGHTS:
+   - Larger GAP reduces velocity and friction losses
+   - Wider channels (larger w) reduce number of turns
+   - Pressure drop scales with velocity squared (v^2)
+   - Lower Re means lower friction factor in Mishra-Gupta
+
+4. MANUFACTURING CONSIDERATIONS:
+   - t_wall = 30.0 mm is manufacturable
+   - GAP = 38.0 mm provides good clearance
+   - Recommend minimum t_wall >= 5mm for structural integrity
+
+============================================================
+  FILES GENERATED
+============================================================
+  ExtendedOptimization.png    - Overall optimization results
+  DetailedComparison.png      - Detailed config comparison
+  DesignSpace.png             - Design envelope visualization
+  EXTREME_STUDY_SUMMARY.txt   - This file
+

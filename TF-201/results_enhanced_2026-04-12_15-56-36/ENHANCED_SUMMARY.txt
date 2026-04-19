@@ -1,0 +1,78 @@
+================================================================
+  ENHANCED OPTIMIZATION SUMMARY
+  Extended Parametric Study Results
+  Generated: 12-Apr-2026 15:56:58
+================================================================
+
+OBJECTIVE:
+  Further minimize pressure drop by extending parameter ranges
+  Constraints:
+    - DP < 8.5 kPa
+    - Minimum 5 helical turns (manufacturing)
+    - Valid thermal design (A_av >= A_req)
+
+EXTENDED PARAMETER RANGES:
+  D_jacket : 0.52 - 0.65 m
+  w        : 0.05 - 0.20 m
+  t        : 0.05 - 0.30 m
+
+----------------------------------------------------------------
+RESULTS COMPARISON:
+----------------------------------------------------------------
+
+Baseline Design:
+  D_jacket = 0.530 m, w = 0.050 m, t = 0.050 m
+  Pressure Drop = 8.558 kPa
+
+Initial Study Best (Study 3):
+  w = 0.1175 m, t = 0.100 m
+  Pressure Drop = 0.798 kPa (90.7% reduction)
+
+EXTENDED OPTIMIZATION BEST:
+  D_jacket      = 0.5522 m (55.22 cm)
+  w             = 0.0620 m (6.20 cm)
+  t             = 0.3300 m (33.00 cm)
+  Pitch (w+t)   = 0.3920 m (39.20 cm)
+  N_turns       = 10.7
+  Annular Gap   = 0.0261 m (2.61 cm)
+  Hydraulic Dia = 0.0367 m (3.67 cm)
+  Velocity      = 0.2242 m/s
+  Pressure Drop = 0.3092 kPa
+
+  IMPROVEMENT: 96.4% reduction from baseline
+               61.3% further reduction from initial study
+
+----------------------------------------------------------------
+PHYSICAL INSIGHTS:
+----------------------------------------------------------------
+1. Pressure drop scales approximately with:
+   DP ~ L_coil/D_h * v^2
+
+2. Increasing pitch (w+t) reduces number of turns,
+   which reduces total coil length L_coil
+
+3. Increasing channel width (w) increases both:
+   - Flow area (reduces velocity)
+   - Hydraulic diameter (reduces friction)
+
+4. The minimum turns constraint (N >= 5) limits how
+   large the pitch can be: P_max = L/5 = 0.840 m
+
+5. For manufacturing, ensure:
+   - Channel width is machinable
+   - Rib thickness provides structural integrity
+   - Annular gap is suitable for fluid distribution
+
+----------------------------------------------------------------
+RECOMMENDATIONS:
+----------------------------------------------------------------
+1. The optimized design achieves excellent pressure drop (< 1 kPa)
+2. Consider manufacturing constraints:
+   - Channel width of 6.2 cm may require special tooling
+   - Rib thickness of 33.0 cm provides good structural support
+3. The reduced number of turns (11) simplifies fabrication
+4. Verify flow distribution with CFD if annular gap is large
+
+================================================================
+  END OF REPORT
+================================================================

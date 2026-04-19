@@ -1,0 +1,90 @@
+======================================================================
+PYROLYSIS HEATING JACKET - FINAL OPTIMIZATION REPORT
+======================================================================
+Generated: 2026-04-12 17:09:45
+Total configurations tested: 160000
+Valid designs found: 58711
+
+======================================================================
+BASELINE DESIGN (REFERENCE - INVALID)
+======================================================================
+  D_jacket = 0.358 m
+  GAP = 20.00 mm
+  N_ch = 10 channels
+  t_fin = 5.0 mm
+  D_h = 33.04 mm
+  Velocity = 0.0196 m/s
+  h1 = 132.30 W/m2K
+  h2 = 123.89 W/m2K
+  DP_total = 28.73 kPa
+  Area Margin S1 = 40.9%
+  Area Margin S2 = -49.3% <-- INSUFFICIENT
+  STATUS: DESIGN FAILED
+
+======================================================================
+OPTIMAL VALID DESIGN
+======================================================================
+  D_jacket = 0.339673 m
+  GAP = 10.8367 mm
+  N_ch = 8 channels
+  t_fin = 14.6482 mm
+  w_ch = 110.2301 mm
+  D_h = 19.7334 mm
+  A_c = 1194.5283 mm2
+  Velocity = 0.038841 m/s
+  Re1 = 0.1506
+  Re2 = 0.1405
+  h1 = 197.468 W/m2K
+  h2 = 184.918 W/m2K
+  LMTD1 = 147.05 K
+  LMTD2 = 42.27 K
+  A_req1 = 0.8110 m2, A_av1 = 2.0480 m2
+  A_req2 = 2.5675 m2, A_av2 = 2.5675 m2
+  DP1 = 68.258 kPa
+  DP2 = 91.705 kPa
+  DP_total = 159.9635 kPa
+  Area Margin S1 = 60.401%
+  Area Margin S2 = 0.0003%
+  STATUS: DESIGN SUCCESSFUL
+
+======================================================================
+DESIGN CHANGES SUMMARY
+======================================================================
+  GAP: 20.00 -> 10.84 mm (45.8% reduction)
+  N_ch: 10 -> 8 channels
+  t_fin: 5.0 -> 14.65 mm
+  D_h: 33.04 -> 19.73 mm
+  Velocity: 0.0196 -> 0.0388 m/s (98.6% increase)
+  h2: 123.89 -> 184.92 W/m2K (49.3% increase)
+  DP: 28.73 -> 159.96 kPa (456.7% increase)
+
+======================================================================
+KEY FINDINGS
+======================================================================
+
+1. The baseline design FAILS because Section 2 has insufficient
+   heat transfer area. The required area exceeds available area:
+   A_req2 = 3.832 m2 > A_av2 = 2.567 m2
+
+2. To make the design valid, h2 must increase to reduce A_req2.
+   Required h2 increase: from 123.9 to 184.9 W/m2K (49% increase)
+
+3. Higher h2 is achieved by:
+   - Reducing the annular gap (increases velocity and turbulence)
+   - Adjusting channel geometry for optimal hydraulic diameter
+
+4. The trade-off is unavoidable: smaller gap and higher velocity
+   result in higher pressure drop.
+
+5. MINIMUM ACHIEVABLE PRESSURE DROP FOR VALID DESIGN:
+   DP = 159.96 kPa
+
+======================================================================
+RECOMMENDATIONS
+======================================================================
+
+1. Implement optimal design with D_jacket = 0.3397 m
+2. Use 8 axial channels with 14.65 mm fin thickness
+3. Ensure pump can handle 160.0 kPa pressure drop
+4. Consider insulation to reduce heat losses given smaller gap
+5. Monitor Section 2 performance closely (minimal margin)

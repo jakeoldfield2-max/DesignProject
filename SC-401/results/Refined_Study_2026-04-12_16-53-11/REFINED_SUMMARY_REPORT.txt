@@ -1,0 +1,79 @@
+============================================================
+  REFINED PARAMETRIC STUDY SUMMARY REPORT
+  Screw Separator Cooling Jacket - Advanced Optimization
+============================================================
+Generated: 12-Apr-2026 16:53:30
+
+This refined study builds on the initial parametric study to:
+  1. Fine-tune parameters near the optimal region
+  2. Analyze Pareto-optimal trade-offs (DP vs h_j)
+  3. Find configurations meeting heat transfer requirements
+
+============================================================
+  CONFIGURATION COMPARISON
+============================================================
+
+Configuration             |  GAP[mm] |    w[mm] |    t[mm] |    DP[kPa] | h_j[W/m2K] |       Re
+-----------------------------------------------------------------------------------------------
+Baseline                  |     10.0 |     30.0 |     20.0 |     36.385 |     1288.6 |    30488
+First Optimum (Min DP)    |     22.0 |     55.0 |     15.0 |      0.956 |      375.7 |    15838
+Best Refined (DP=0.41 kPa) |     25.0 |     65.0 |     18.0 |      0.411 |      289.7 |    13550
+Balanced (h_j=386)        |     19.0 |     62.1 |     18.0 |      0.954 |      386.0 |    15029
+
+============================================================
+  PARETO-OPTIMAL CONFIGURATIONS (Top 10)
+============================================================
+
+ GAP[mm] |    w[mm] |    t[mm] |    DP[kPa] | h_j[W/m2K]
+-------------------------------------------------------
+    25.0 |     65.0 |     18.0 |      0.411 |      289.7
+    24.5 |     65.0 |     18.0 |      0.433 |      295.0
+    25.0 |     63.6 |     18.0 |      0.438 |      295.3
+    24.0 |     65.0 |     18.0 |      0.457 |      300.6
+    24.5 |     63.6 |     18.0 |      0.461 |      300.7
+    25.0 |     62.1 |     18.0 |      0.467 |      301.1
+    23.5 |     65.0 |     18.0 |      0.483 |      306.4
+    24.0 |     63.6 |     18.0 |      0.487 |      306.4
+    24.5 |     62.1 |     18.0 |      0.492 |      306.7
+    25.0 |     60.7 |     18.0 |      0.499 |      307.3
+
+============================================================
+  BEST CONFIGURATIONS FOR h_j REQUIREMENTS
+============================================================
+
+     Min h_j |  GAP[mm] |    w[mm] |    t[mm] |    DP[kPa]
+------------------------------------------------------------
+         500 |     18.0 |     47.9 |     18.0 |      2.282
+
+============================================================
+  RECOMMENDATIONS
+============================================================
+
+Based on the refined analysis:
+
+1. MINIMUM PRESSURE DROP CONFIGURATION:
+   GAP = 25.0 mm, w = 65.0 mm, t_wall = 18.0 mm
+   DP = 0.411 kPa (98.9% reduction from baseline)
+   h_j = 289.7 W/(m2K)
+
+2. BALANCED CONFIGURATION (Good DP and h_j):
+   GAP = 19.0 mm, w = 62.1 mm, t_wall = 18.0 mm
+   DP = 0.954 kPa (97.4% reduction from baseline)
+   h_j = 386.0 W/(m2K)
+
+3. KEY INSIGHTS:
+   - Increasing GAP from 10mm to 20-25mm dramatically reduces DP
+   - Increasing w from 30mm to 55-65mm provides further DP reduction
+   - Decreasing t_wall to 8-12mm optimizes turn geometry
+   - Trade-off: Lower DP comes at cost of reduced h_j
+   - Design remains valid as A_available >> A_required
+
+============================================================
+  FILES GENERATED
+============================================================
+  StudyAB_ParetoFront.png        - Pareto optimization plot
+  StudyC_HeatTransferTargets.png - h_j constrained results
+  StudyD_ResponseSurfaces.png    - 3D response surfaces
+  Final_Comparison.png           - Multi-configuration comparison
+  REFINED_SUMMARY_REPORT.txt     - This file
+

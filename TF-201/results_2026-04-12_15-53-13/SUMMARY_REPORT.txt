@@ -1,0 +1,94 @@
+================================================================
+  PARAMETRIC STUDY SUMMARY REPORT
+  Torrefaction Heating Jacket - Pressure Drop Optimization
+  Generated: 12-Apr-2026 15:53:43
+================================================================
+
+OBJECTIVE:
+  Minimize pressure drop while maintaining thermal design validity
+  Constraint: Pressure Drop < 8.5 kPa
+
+FIXED PARAMETERS (Torrefaction Unit Design):
+  D_pyrolizer  = 0.500 m (pyrolizer outer diameter)
+  L            = 4.200 m (pyrolizer length)
+  m_dot        = 0.250 kg/s (mass flow rate)
+  T_hot_in     = 575.16 K (302.01 C)
+  T_wall       = 553.15 K (280.00 C)
+  Q_req        = 11290 W (heat duty)
+  f_c          = 0.0090 (Fanning friction factor)
+
+VARIABLE PARAMETERS:
+  D_jacket  : Jacket inner diameter [m]
+  w         : Helical channel width [m]
+  t         : Wall/rib thickness [m]
+
+----------------------------------------------------------------
+BASELINE DESIGN:
+----------------------------------------------------------------
+  D_jacket = 0.5300 m (53.0 cm)
+  w        = 0.0500 m (5.0 cm)
+  t        = 0.0500 m (5.0 cm)
+  Pressure Drop = 8.5576 kPa
+  Design Valid  = true
+
+----------------------------------------------------------------
+STUDY RESULTS:
+----------------------------------------------------------------
+
+Study 1: D_jacket vs Channel Width (w)
+  Fixed: t = 0.050 m
+  Best:  D_jacket = 0.5275 m, w = 0.1175 m
+  Min DP = 1.0331 kPa (87.9% reduction)
+
+Study 2: D_jacket vs Rib Thickness (t)
+  Fixed: w = 0.050 m
+  Best:  D_jacket = 0.5575 m, t = 0.1000 m
+  Min DP = 1.0100 kPa (88.2% reduction)
+
+Study 3: Channel Width (w) vs Rib Thickness (t)
+  Fixed: D_jacket = 0.5275 m
+  Best:  w = 0.1175 m, t = 0.1000 m
+  Min DP = 0.7985 kPa (90.7% reduction)
+
+----------------------------------------------------------------
+OPTIMAL DESIGN (3D Search):
+----------------------------------------------------------------
+  D_jacket      = 0.5329 m (53.29 cm)
+  w             = 0.0943 m (9.43 cm)
+  t             = 0.1000 m (10.00 cm)
+  Pressure Drop = 0.8585 kPa
+  Annular Gap   = 0.0164 m (1.64 cm)
+  Hydraulic Dia = 0.0280 m (2.80 cm)
+
+  IMPROVEMENT: 90.0% reduction from baseline
+
+----------------------------------------------------------------
+KEY FINDINGS:
+----------------------------------------------------------------
+1. Increasing jacket diameter (D_jacket) increases flow area,
+   reducing velocity and pressure drop.
+
+2. Increasing channel width (w) increases hydraulic diameter,
+   which is beneficial for reducing pressure drop.
+
+3. Decreasing rib thickness (t) increases number of turns but
+   has complex effects on overall coil length.
+
+4. The design must maintain A_available >= A_required for valid
+   heat transfer.
+
+----------------------------------------------------------------
+FILES GENERATED:
+----------------------------------------------------------------
+  study1_Djacket_vs_w.png      - Contour: D_jacket vs channel width
+  study2_Djacket_vs_t.png      - Contour: D_jacket vs rib thickness
+  study3_w_vs_t.png            - Contour: channel width vs rib thickness
+  study4_3D_valid_designs.png  - 3D scatter of valid designs
+  study5_sensitivity.png       - Sensitivity analysis plots
+  comparison_bar_chart.png     - Comparison of all optima
+  design_validity_map.png      - Valid/invalid design regions
+  SUMMARY_REPORT.txt           - This file
+
+================================================================
+  END OF REPORT
+================================================================
